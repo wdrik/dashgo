@@ -16,7 +16,7 @@ export function makeServer() {
     factories: {
       user: Factory.extend({
         name(i: number) {
-          return `User ${i + 1}`;
+          return faker.name.findName();
         },
         email() {
           return faker.internet.email().toLowerCase();
@@ -58,6 +58,7 @@ export function makeServer() {
         );
       });
       this.post('/users');
+      this.get('/users/:id');
 
       this.namespace = '';
       this.passthrough();
